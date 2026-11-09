@@ -2,8 +2,8 @@
 
 ## 5.1 LessonPlan (Surfing and Training)
 
-Steps 1 and 2 are unchanged from the main document. Step 3 is the complete file:
-`src/LessonPlanDemo.java`
+Steps 1 and 2 are unchanged from the main document. Step 3 is the package
+`src/prototype/lessonplan/` (`Prototype`, `LessonPlan`, `LessonPlanRegistry`, `LessonPlanDemo`).
 
 ## 5.2 MessageTemplate (Customer Service)
 
@@ -41,4 +41,4 @@ The tone drifts from agent to agent, and a note meant for one customer can reach
 
 ### Step 3: Java Code
 
-The complete file is `src/MessageTemplateDemo.java`.
+The code is in the package `src/prototype/messagetemplate/` (`MessageTemplate`, `MessageLibrary`, `MessageTemplateDemo`).
