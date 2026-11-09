@@ -1,23 +1,15 @@
+package singleton.booking;
+
 import java.util.HashMap;
 import java.util.Map;
-
-final class Confirmation {
-    private final String text;
-    Confirmation(String text) { this.text = text; }
-    @Override public String toString() { return "Confirmation[" + text + "]"; }
-}
-
-final class BookingConflictException extends RuntimeException {
-    BookingConflictException(String message) { super(message); }
-}
 
 final class BookingSystem {
     private final Map<String, Integer> remaining = new HashMap<>();
     private int nextId = 1;
 
-    private BookingSystem() { }                      
+    private BookingSystem() { }
 
-    private static final class Holder {             
+    private static final class Holder {
         private static final BookingSystem INSTANCE = new BookingSystem();
     }
 
@@ -43,22 +35,5 @@ final class BookingSystem {
 
     private static String key(String serviceType, String timeSlot) {
         return serviceType + " @ " + timeSlot;
-    }
-}
-
-public class BookingSystemDemo {
-    public static void main(String[] args) {
-        BookingSystem frontDesk = BookingSystem.getInstance();
-        BookingSystem customerApp = BookingSystem.getInstance();
-        BookingSystem phoneDesk = BookingSystem.getInstance();
-        System.out.println("Same instance? " + (frontDesk == customerApp && customerApp == phoneDesk));
-
-        frontDesk.openSlot("Beginner lesson", "Sat 09:00", 1);
-        System.out.println(customerApp.book("Anna", "Beginner lesson", "Sat 09:00"));
-        try {
-            phoneDesk.book("Ben", "Beginner lesson", "Sat 09:00");
-        } catch (BookingConflictException e) {
-            System.out.println("Phone desk: " + e.getMessage());
-        }
     }
 }
